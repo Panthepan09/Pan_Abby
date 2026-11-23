@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Questions about our lil' Peter</title>
+<style>
+  h1 {
+    color: ghostwhite;
+  }
+  label {
+    color: white;
+  }
+  .question {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body style="background-color: black;">
+    <nav>
+        <a href="index.html">first page</a>
+        <a href="game1.html">second page</a>
+        <a href="Pan's game.html">third page</a>
+        <a href="Qs.html">forth page</a>
+    </nav>
+
+<h1 id="first_h1">Hi, you're gonna answer some questions about our friend.</h1>
+
+	<div class="question" id="question1">
+	<img src="pics\peter2.jpg" width="200" height="200">
+	<label>Who am I?</label>
+	<select id="who">
+		<option value="random stranger">Random stranger</option>
+		<option value="peter">Peter</option>
+		<option value="gay">I think ur gay!</option>
+	</select>
+	<button onclick="q1()">Submit</button>
+	</div>
+
+	<div id="question2" class="question" style="display: none;">
+		<img src="pics\peter5.jpg" width="200" height="200">
+		<label>What's my gender?</label>
+		<input type="radio" id="genderMale" name="gender" value="male">
+		<label>Male</label>
+		<input type="radio" id="genderFemale" name="gender" value="female">
+		<label>Female</label>
+	</div>
+
+	<div id="question3" class="question" style="display: none; flex-direction: column; gap: 15px;">
+    <label>What are my emotions?</label>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+        <img src="pics/peter3.jpg" width="200" height="200">
+        <img src="pics/peter4.jpg" width="200" height="200">
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <input type="checkbox" id="emoHappy" name="emo" value="happy">
+        <label>^-^</label>
+        <input type="checkbox" name="emo" id="emoAngry" value="angry">
+        <label>Angry!</label>
+        <input type="checkbox" name="emo" id="emoConfused" value="confused">
+        <label>Confused?</label>
+        <input type="checkbox" name="emo" id="emoSad" value="sad">
+        <label>Sad……</label>
+    </div>
+</div>
+
+    <div id="question4" class="question" style="display: none;">
+    	<img src="pics\peter6.jpg" width="200" height="200">
+    	<label>Am I cute?</label>
+    	<input type="text" id="cute" placeholder="'yes' or 'no'">
+    </div>
+
+    <div id="question5" class="question" style="display:none">
+        <label>How fast did you click on the Peter image.(<=500ms + 5 points)</label>
+        <input type="text" id="howfast" placeholder="numbers only">
+    </div>
+    <div id="question6" class="question" style="display:none">
+        <label>What do you think of Mr.Chu?</label>
+        <input type="text" id="Chu" placeholder="'good' or 'bad'">
+    </div>
+    <div id="question7" class="question" style="display: none;">
+        <label for="limitBox">How to limit certain box's horizontal direction not to escape from window?</label>
+        <select id="limitBox">
+            <option value="">>-- Choose one --<</option>
+            <option value="opt1">window.innerWidth + pic.offsetWidth</option>
+            <option value="opt2">window.innerWidth - pic.offsetWidth</option>
+            <option value="opt3">pic.offsetWidth - window.innerWidth</option>
+            <option value="opt4">window.outerHeight * pic.offsetWidth</option>
+        </select>
+    </div>
+    <div id="question8" class="question" style="display: none;">
+    <label>In your code, which property value hides a question block without deleting it?</label>
+        <select id="hide">
+            <option value="">-- Choose one --</option>
+            <option value="h1">display: none</option>
+            <option value="h2">display: flex</option>
+            <option value="h3">opacity: 1</option>
+            <option value="h4">width: 0</option>
+        </select>
+    </div>
+    <button onclick="submit()" style="display:none; margin-left: 50%;" id="button">Submit</button>
+
+
+<script>
+	function q1() {
+    let answer1 = document.getElementById('who').value;
+    if (answer1 === 'peter') {
+        alert("This is me!");
+        document.getElementById('question1').style.display = 'none'
+    	document.getElementById('question2').style.display = 'flex'
+    	document.getElementById('question3').style.display = 'flex'
+    	document.getElementById('question4').style.display = 'flex'
+        document.getElementById('question5').style.display = 'flex'
+        document.getElementById('question6').style.display = 'flex'
+        document.getElementById('question7').style.display = 'flex'
+        document.getElementById('question8').style.display = 'flex';
+    	document.getElementById('button').style.display = 'flex'
+    	document.getElementById('first_h1').innerHTML = 'You earn 5 marks from every question you correctly answered.'
+    } 
+    else {
+    	if (answer1 === 'gay') {
+    		alert("Well, you're right, but this is not what I asked.")
+    	}
+    	else{
+        alert("Try again!");
+    }
+    }
+}
+	let gg = false
+	let mark = 0
+	function submit() {
+		if (gg) {
+			return
+		}
+
+
+    	let isMale = document.getElementById('genderMale').checked;
+    	let isFemale = document.getElementById('genderFemale').checked;
+
+    	if (!isMale && !isFemale) {
+        	alert("Please pick one for q1");
+        
+    } 
+    	else if (isMale) {
+        	mark +=5
+        
+    } 
+
+		let happy1 = document.getElementById('emoHappy').checked
+		let angry1 = document.getElementById('emoAngry').checked
+		let confused1 = document.getElementById('emoConfused').checked
+		let sad1 = document.getElementById('emoSad').checked
+
+		if (!happy1 && angry1 && confused1 && !sad1) {
+   		mark += 5
+	}
+
+    	if (document.getElementById('cute').value == 'yes') {
+    		mark +=5
+    } 	else if (document.getElementById('cute').value == '') {
+    		alert('Please say something for q3')
+    }
+
+        const fastVal = document.getElementById('howfast').value.trim();
+            if (fastVal === '') {
+                alert('enter something for q4')
+        }   else if (Number(fastVal) <= 500) {
+                mark += 5
+        }
+
+        if (document.getElementById('Chu').value == 'good') {
+            mark+=5
+        }
+        else if (document.getElementById('Chu').value == 'bad'){
+            alert('找死！竟敢说Mr.Chu的不好！')
+        }
+        else{
+            alert('Say something for q5')
+        }
+
+        let box_ans = document.getElementById('limitBox').value;
+        if (box_ans === '') {
+            alert('Pick an option for the box question');
+        } else if (box_ans === 'opt2') {
+            mark += 5;
+        }
+
+        let hide = document.getElementById('hide').value;
+        if (hide === '') {
+            alert('Pick an option for the display question');
+        } else if (hide === 'h1') {
+            mark += 5;
+        }
+
+    document.getElementById('first_h1').innerHTML = `Your mark:${mark}/35`
+    gg = true
+
+
+
+}
+
+
+
+</script>
+</body>
+</html>
